@@ -1,0 +1,12 @@
+#Build
+Debug/
+Release/
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+#System Files
+.DS_Store
+Thumbs.db
