@@ -33,6 +33,8 @@
 /* USER CODE END 1 */
 
 /** Configure pins
+     PH0-OSC_IN(PH0)   ------> RCC_OSC_IN
+     PH1-OSC_OUT(PH1)   ------> RCC_OSC_OUT
      PA13(JTMS/SWDIO)   ------> DEBUG_JTMS-SWDIO
      PA14(JTCK/SWCLK)   ------> DEBUG_JTCK-SWCLK
 */
@@ -42,6 +44,7 @@ void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
@@ -51,8 +54,8 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(IMU_CS_GPIO_Port, IMU_CS_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : ACT_ACTIVE_Pin ACT_RETURN_Pin IMU_INT1_Pin OV9281_FSTROBE_Pin */
-  GPIO_InitStruct.Pin = ACT_ACTIVE_Pin|ACT_RETURN_Pin|IMU_INT1_Pin|OV9281_FSTROBE_Pin;
+  /*Configure GPIO pins : ACT_ACTIVE_Pin ACT_RETURN_Pin IMU_INT1_Pin */
+  GPIO_InitStruct.Pin = ACT_ACTIVE_Pin|ACT_RETURN_Pin|IMU_INT1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
